@@ -1,0 +1,25 @@
+{
+    "name": "smus-snippets",
+    "displayName": "SMUS Snippets",
+    "description": "Snippets for Flutter SMUS architecture",
+    "version": "1.0.0",
+    "icon": "icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eli1stark/smus-snippets"
+    },
+    "engines": {
+        "vscode": "^1.56.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "dart",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ]
+    }
+}
