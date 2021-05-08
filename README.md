@@ -34,9 +34,11 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 
 ## Release Notes
 
-### 1.0.0
+### 1.0.1
+Update README.md
 
-Initial release of SMUS Snippets.
+### 1.0.0
+Initial release of SMUS Snippets
 
 ## Credits:
 <div>Logo made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

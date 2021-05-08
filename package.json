@@ -2,7 +2,7 @@
     "name": "smus-snippets",
     "displayName": "SMUS Snippets",
     "description": "Snippets for Flutter SMUS architecture",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "icon.png",
     "publisher": "EliStark",
     "repository": {
