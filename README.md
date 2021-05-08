@@ -6,8 +6,8 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 | Snippet     | Description              |
 | ----------- | ------------------------ |
 | iClass      | Creates immutable class  |
-| fClass      | Creates a freezed class  |
-| fpart       | Creates a freezed part   |
+| fClass      | Creates freezed class  |
+| fpart       | Creates freezed part   |
 
 ## Source layer snippets
 | Snippet     | Description                                      |
@@ -16,9 +16,9 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 | toJson      | Creates toJson() function for json_serializable  |
 | fromModel   | Creates fromModel() factory |
 | toModel     | Creates toModel() function  |
-| dto         | Creates a DTO class with all boilerplate needed - imports, parts, fromJson(), toJson(), fromModel(), toModel(). |
-| repo        | Creates a repository function with all needed boilerplate |
-| gpart       | Creates a generated part for json_serializable |
+| dto         | Creates DTO class with all boilerplate needed - imports, parts, fromJson(), toJson(), fromModel(), toModel(). |
+| repo        | Creates repository function with all needed boilerplate |
+| gpart       | Creates generated part for json_serializable |
 
 ## State layer snippets
 | Snippet  | Description                     |
