@@ -1,4 +1,4 @@
-# smus-snippets README
+# SMUS Snippets
 
 This is the README for your extension "smus-snippets". After writing up a brief description, we recommend including the following sections.
 
