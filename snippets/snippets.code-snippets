@@ -1,202 +1,171 @@
 {
-	// [Source] layer:
+	// [MODEL]
+	"Immutable class": {
+		"prefix": "iclass",
+		"body": [
+			"@immutable",
+			"class ${1:Model} {",
+			"  const ${1:Model}(${2});",
+			"}",
+		],
+		"description": "Immutable class"
+	},
+	"Freezed Class": {
+		"prefix": "fclass",
+		"body": [
+			"@freezed",
+			"class ${1:Model} with _$${1:Model}{",
+			"  const factory ${1:Model}(${2}) = _${1:Model};",
+			"}"
+		],
+		"description": "Freezed Class"
+	},
+	"Freezed Union": {
+		"prefix": "fu",
+		"body": [
+			"@freezed",
+			"class ${1:Union} with _$${1:Union}{",
+			"  const factory ${1:Union}.${2}(${4}) = ${3};",
+			"}"
+		],
+		"description": "Freezed Union"
+	},
+	"Freezed Union Case": {
+		"prefix": "fucase",
+		"body": [
+			"const factory ${1:Union}.${2}(${4}) = ${3};"
+		],
+		"description": "Freezed Union Case"
+	},
+
+	// JSON SERIALIZATION
 	"From JSON": {
 		"prefix": "fromJson",
 		"body": [
-		  "factory ${1:}Dto.fromJson(Map<String, dynamic> json) =>",
-		  "    _$${1:}DtoFromJson(json);"
+			"factory ${1:Model}.fromJson(Map<String, dynamic> json) =>",
+			"    _$${1:Model}FromJson(json);"
 		],
 		"description": "fromJson factory for json_serializable"
 	},
 	"To JSON": {
 		"prefix": "toJson",
 		"body": [
-		  "Map<String, dynamic> toJson() => _$${1:}DtoToJson(this);"
+			"Map<String, dynamic> toJson() => _$${1:Model}ToJson(this);"
 		],
 		"description": "toJson method for json_serializable"
 	},
-	"From Model": {
-		"prefix": "fromModel",
+
+	// [SERVICE]
+	"Post Service": {
+		"prefix": "pserv",
 		"body": [
-		  "factory ${1:}Dto.fromModel(${1:}Model model) {",
-		  "  return ${1:}Dto();",
-		  "}"
-		],
-		"description": "fromModel factory"
-	},
-	"To Model": {
-		"prefix": "toModel",
-		"body": [
-		  "${1:}Model toModel() {",
-		  "  return ${1:}Model();",
-		  "}"
-		],
-		"description": "toModel method"
-	},
-	"Dto": {
-		"prefix": "dto",
-		"body": [
-		  "import 'package:json_annotation/json_annotation.dart';",
-		  "",
-		  "part '${TM_FILENAME_BASE}.g.dart';",
-		  "",
-		  "@JsonSerializable()",
-		  "class ${1:}Dto {",
-		  "  ${1:}Dto();",
-		  "",
-		  "  factory ${1:}Dto.fromJson(Map<String, dynamic> json) =>",
-		  "      _$${1:}DtoFromJson(json);",
-		  "",
-		  "  factory ${1:}Dto.fromModel(${1:}Model model) {",
-		  "    return ${1:}Dto();",
-		  "  }",
-		  "",
-		  "  Map<String, dynamic> toJson() => _$${1:}DtoToJson(this);",
-		  "",
-		  "  ${1:}Model toModel() {",
-		  "    return ${1:}Model();",
-		  "  }",
-		  "}",
-		  "",
-		  "",
-		],
-		"description": "Make dto class"
-	},
-	"Repository": {
-		"prefix": "repo",
-		"body": [
-			"Future<Handler<${1:}Model>> ${2:}Repository() async {",
-			"  final _service = ${3:}Service();",
+			"import 'package:dio/dio.dart';",
 			"",
-			"  try {",
-			"    final response = await _service.${2:}();",
+			"Future<${1:ResponseModel}> ${4:name}Service(",
+			"  Dio dio,",
+			"  ${2:RequestModel} model,",
+			") async {",
+			"  final response = await dio.post(",
+			"    '${3:url}',",
+			"    data: model.toJson(),",
+			"  );",
 			"",
-			"    final responseData = response.data as Map<String, dynamic>;",
+			"  final responseData = response.data as Map<String, dynamic>;",
 			"",
-			"    final dto = ${1:}Dto.fromJson(responseData);",
-			"",
-			"    final model = dto.toModel();",
-			"",
-			"    return Handler(model: model);",
-			"  } catch (e) {",
-			"    return Handler(error: '$e');",
-			"  }",
+			"  return ${1:ResponseModel}.fromJson(responseData);",
 			"}",
 			"",
-			"",
-			"",
-			"",
 		],
-		"description": "Repository function"
+		"description": "Post service with dio"
 	},
-	"Generated part": {
-		"prefix": "gpart",
+	"Get Service": {
+		"prefix": "gserv",
 		"body": [
-		  "part '${TM_FILENAME_BASE}.g.dart';",
+			"import 'package:dio/dio.dart';",
+			"",
+			"Future<${1:ResponseModel}> ${4:name}Service(Dio dio) async {",
+			"  final response = await dio.get(",
+			"    '${2:url}',",
+			"  );",
+			"",
+			"  final responseData = response.data as Map<String, dynamic>;",
+			"",
+			"  return ${1:ResponseModel}.fromJson(responseData);",
+			"}",
+			"",
 		],
-		"description": "Creates a generated part"
+		"description": "Get service with dio"
 	},
 
-	// [State] layer:
+	// RIVERPOD CONVENTION SNIPPETS:
 	"Provider": {
 		"prefix": "pod",
 		"body": [
-		  "final ${1:}Pod = Provider<${2:}>((ref) {",
-		  "  return ${3:};",
-		  "});"
+			"final ${1:name}Pod = Provider<${2:}>((ref) {",
+			"  return ${3:};",
+			"});"
 		],
 		"description": "Provider from Riverpod library"
 	},
 	"Future Provider": {
 		"prefix": "fpod",
 		"body": [
-		  "final ${1:}Fpod = FutureProvider<${2:}>((ref) {",
-		  "  return ${3:};",
-		  "});"
+			"final ${1:name}Fpod = FutureProvider<${2:}>((ref) {",
+			"  return ${3:};",
+			"});"
 		],
 		"description": "Future Provider from Riverpod library"
 	},
 	"Stream Provider": {
 		"prefix": "spod",
 		"body": [
-		  "final ${1:}Spod = StreamProvider<${2:}>((ref) {",
-		  "  return ${3:};",
-		  "});"
+			"final ${1:name}Spod = StreamProvider<${2:}>((ref) {",
+			"  return ${3:};",
+			"});"
 		],
 		"description": "Stream Provider from Riverpod library"
 	},
 	"State Provider": {
 		"prefix": "stpod",
 		"body": [
-		  "final ${1:}Stpod = StateProvider<${2:}>((ref) {",
-		  "  return ${3:};",
-		  "});"
+			"final ${1:name}Stpod = StateProvider<${2:}>((ref) {",
+			"  return ${3:};",
+			"});"
 		],
 		"description": "State Provider from Riverpod library"
 	},
 	"State Notifier Provider": {
 		"prefix": "notipod",
 		"body": [
-		  "final ${1:}Notipod = StateNotifierProvider<${2:}Notifier, ${2:}Model>((ref) {",
-		  "  return ${2:}Notifier();",
-		  "});"
+			"final ${1:name}Notipod = StateNotifierProvider<${2:Name}Notifier, ${2:Model}>((ref) {",
+			"  return ${2:Name}Notifier();",
+			"});"
 		],
 		"description": "State Notifier Provider from Riverpod library"
 	},
 	"State Notifier": {
 		"prefix": "notifier",
 		"body": [
-		  "class ${1:}Notifier extends StateNotifier<${1:}Model> {",
-		  "  ${1:}Notifier() : super(${1:}Model());",
-		  "}"
+			"class ${1:Name}Notifier extends StateNotifier<${2:Model}> {",
+			"  ${1:Name}Notifier() : super(${2:Model}());",
+			"}"
 		],
 		"description": "State Notifier from Riverpod library"
 	},
-	"Future Provider Repository": {
-		"prefix": "frep",
-		"body": [
-		  "final ${1:}Frep = FutureProvider<${2:}Repository>((ref) {",
-		  "  return ${3:};",
-		  "});"
-		],
-		"description": "Future Provider Repository"
-	},
-	"Stream Provider Repository": {
-		"prefix": "srep",
-		"body": [
-		  "final ${1:}Srep = StreamProvider<${2:}Repository>((ref) {",
-		  "  return ${3:};",
-		  "});"
-		],
-		"description": "Stream Provider Repository"
-	},
 
-	// [Model] layer
-	"Immutable class": {
-		"prefix": "iclass",
-		"body": [
-		  "@immutable",
-		  "class ${1:}Model {",
-		  "  const ${1:}Model(${2});",
-		  "}",
-		],
-		"description": "Create immutable class"
-	},
-	"Freezed Class": {
-		"prefix": "fclass",
-		"body": [
-		  "@freezed",
-		  "class ${1:}Model with _$${1:}Model{",
-		  "  const factory ${1:}Model(${2}) = _${1:}Model;",
-		  "}"
-		],
-		"description": "Freezed Class"
-	},
+	// [PART]
 	"Freezed part": {
 		"prefix": "fpart",
 		"body": [
-		  "part '${TM_FILENAME_BASE}.freezed.dart';",
+			"part '${TM_FILENAME_BASE}.freezed.dart';",
 		],
 		"description": "Creates a freezed part"
+	},
+	"Generated part": {
+		"prefix": "gpart",
+		"body": [
+			"part '${TM_FILENAME_BASE}.g.dart';",
+		],
+		"description": "Creates a generated part"
 	},
 }
