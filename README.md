@@ -3,6 +3,7 @@
 This extension provides snippets for Flutter [SMUS Architecture](https://github.com/eli1stark/smus).
 
 ## Model
+
 | Snippet     | Description                |
 | ----------- | -------------------------- |
 | iClass      | Creates immutable class    |
@@ -11,18 +12,21 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 | fucase      | Creates Freezed Union case |
 
 ## Service
+
 | Snippet     | Description                   |
 | ----------- | ----------------------------- |
 | pserv       | Creates post service with dio |
 | gserv       | Creates get service with dio  |
 
 ## JSON Serialization
+
 | Snippet     | Description                |
 | ----------- | ---------------------------|
 | fromJson    | Creates fromJson() factory |
 | toJson      | Creates toJson() function  |
 
 ## Riverpod (Provider/Notifier)
+
 | Snippet  | Description                     |
 | ---------| ------------------------------- |
 | pod      | Creates Provider                |
@@ -33,6 +37,7 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 | notifier | Creates State Notifier class    |
 
 ## Part
+
 | Snippet     | Description            |
 | ----------- | -----------------------|
 | fpart       | Creates freezed part   |
@@ -41,13 +46,17 @@ This extension provides snippets for Flutter [SMUS Architecture](https://github.
 ## Release Notes
 
 ### 2.0.0
+
 Add new snippets, remove old ones
 
 ### 1.0.1
+
 Update README.md
 
 ### 1.0.0
+
 Initial release of SMUS Snippets
 
-## Credits:
-<div>Logo made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+## Credits
+
+Logo made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)

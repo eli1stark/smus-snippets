@@ -159,13 +159,13 @@
 		"body": [
 			"part '${TM_FILENAME_BASE}.freezed.dart';",
 		],
-		"description": "Creates a freezed part"
+		"description": "Creates freezed part"
 	},
 	"Generated part": {
 		"prefix": "gpart",
 		"body": [
 			"part '${TM_FILENAME_BASE}.g.dart';",
 		],
-		"description": "Creates a generated part"
+		"description": "Creates generated part"
 	},
 }
